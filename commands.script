@@ -1,0 +1,69 @@
+Script started on Fri 30 Aug 2019 05:17:01 PM CDT
+[?1034hbash-4.2$ man cd
+[?1049h[?1h=BASH_BUILTINS(1)                                                             General Commands Manual                                                            BASH_BUILTINS(1)[m
+[m
+[1mNAME[0m[m
+       bash, :, ., [, alias, bg, bind, break, builtin, caller, cd, command, compgen, complete, compopt, continue, declare, dirs, disown, echo, enable, eval, exec, exit, export,[m
+       false, fc, fg, getopts, hash, help, history, jobs, kill, let, local, logout, mapfile, popd, printf, pushd, pwd, read, readonly, return, set, shift, shopt,  source,  sus‐[m
+       pend, test, times, trap, true, type, typeset, ulimit, umask, unalias, unset, wait - bash built-in commands, see [1mbash[0m(1)[m
+[m
+[1mBASH[0m [1mBUILTIN[0m [1mCOMMANDS[0m[m
+       Unless  otherwise  noted,  each builtin command documented in this section as accepting options preceded by [1m-[0m accepts [1m--[0m to signify the end of the options.  The [1m:[0m, [1mtrue[0m,[m
+       [1mfalse[0m, and [1mtest[0m builtins do not accept options and do not treat [1m--[0m specially.  The [1mexit[0m, [1mlogout[0m, [1mbreak[0m, [1mcontinue[0m, [1mlet[0m, and [1mshift[0m builtins accept  and  process  arguments[m
+       beginning  with  [1m-[0m without requiring [1m--[0m.  Other builtins that accept arguments but are not specified as accepting options interpret arguments beginning with [1m-[0m as invalid[m
+       options and require [1m--[0m to prevent this interpretation.[m
+       [1m:[0m [[4marguments[24m][m
+              No effect; the command does nothing beyond expanding [4marguments[24m and performing any specified redirections.  A zero exit code is returned.[m
+[m
+        [1m.[0m  [4mfilename[24m [[4marguments[24m][m
+       [1msource[0m [4mfilename[24m [[4marguments[24m][m
+              Read and execute commands from [4mfilename[24m in the current shell environment and return the exit status of the last command executed from [4mfilename[24m.  If [4mfilename[24m  does[m
+              not  contain  a slash, file names in [1mPATH[0m are used to find the directory containing [4mfilename[24m.  The file searched for in [1mPATH[0m need not be executable.  When [1mbash[0m is[m
+              not in [4mposix[24m [4mmode[24m, the current directory is searched if no file is found in [1mPATH[0m.  If the [1msourcepath[0m option to the [1mshopt[0m builtin command is turned off,  the  [1mPATH[0m[m
+              is  not  searched.   If  any  [4marguments[24m  are  supplied,  they become the positional parameters when [4mfilename[24m is executed.  Otherwise the positional parameters are[m
+              unchanged.  The return status is the status of the last command exited within the script (0 if no commands are executed), and false if [4mfilename[24m is  not  found  or[m
+              cannot be read.[m
+[m
+       [1malias[0m [[1m-p[0m] [[4mname[24m[=[4mvalue[24m] ...][m
+              [1mAlias[0m  with  no arguments or with the [1m-p[0m option prints the list of aliases in the form [1malias[0m [4mname[24m=[4mvalue[24m on standard output.  When arguments are supplied, an alias[m
+              is defined for each [4mname[24m whose [4mvalue[24m is given.  A trailing space in  [4mvalue[24m causes the next word to be checked for alias substitution when the alias  is  expanded.[m
+              For  each  [4mname[24m  in  the  argument list for which no [4mvalue[24m is supplied, the name and value of the alias is printed.  [1mAlias[0m returns true unless a [4mname[24m is given for[m
+              which no alias has been defined.[m
+[m
+       [1mbg[0m [[4mjobspec[24m ...][m
+              Resume each suspended job [4mjobspec[24m in the background, as if it had been started with [1m&[0m.  If [4mjobspec[24m is not present, the shell's notion of the [4mcurrent[24m [4mjob[24m is  used.[m
+              [1mbg[0m [4mjobspec[24m returns 0 unless run when job control is disabled or, when run with job control enabled, any specified [4mjobspec[24m was not found or was started without job[m
+              control.[m
+[m
+       [1mbind[0m [[1m-m[0m [4mkeymap[24m] [[1m-lpsvPSV[0m][m
+       [1mbind[0m [[1m-m[0m [4mkeymap[24m] [[1m-q[0m [4mfunction[24m] [[1m-u[0m [4mfunction[24m] [[1m-r[0m [4mkeyseq[24m][m
+       [1mbind[0m [[1m-m[0m [4mkeymap[24m] [1m-f[0m [4mfilename[24m[m
+       [1mbind[0m [[1m-m[0m [4mkeymap[24m] [1m-x[0m [4mkeyseq[24m:[4mshell-command[24m[m
+       [1mbind[0m [[1m-m[0m [4mkeymap[24m] [4mkeyseq[24m:[4mfunction-name[24m[m
+       [1mbind[0m [4mreadline-command[24m[m
+              Display current [1mreadline[0m key and function bindings, bind a key sequence to a [1mreadline[0m function or macro, or set a [1mreadline[0m variable.  Each non-option argument  is[m
+              a  command  as it would appear in [4m.inputrc[24m, but each binding or command must be passed as a separate argument; e.g., '"\C-x\C-r": re-read-init-file'.  Options, if[m
+              supplied, have the following meanings:[m
+              [1m-m[0m [4mkeymap[24m[m
+                     Use [4mkeymap[24m as the keymap to be affected by the subsequent bindings.  Acceptable  [4mkeymap[24m  names  are  [4memacs,[24m  [4memacs-standard,[24m  [4memacs-meta,[24m  [4memacs-ctlx,[24m  [4mvi,[24m[m
+                     [4mvi-move,[24m [4mvi-command[24m, and [4mvi-insert[24m.  [4mvi[24m is equivalent to [4mvi-command[24m; [4memacs[24m is equivalent to [4memacs-standard[24m.[m
+              [1m-l[0m     List the names of all [1mreadline[0m functions.[m
+              [1m-p[0m     Display [1mreadline[0m function names and bindings in such a way that they can be re-read.[m
+              [1m-P[0m     List current [1mreadline[0m function names and bindings.[m
+              [1m-s[0m     Display [1mreadline[0m key sequences bound to macros and the strings they output in such a way that they can be re-read.[m
+              [1m-S[0m     Display [1mreadline[0m key sequences bound to macros and the strings they output.[m
+              [1m-v[0m     Display [1mreadline[0m variable names and values in such a way that they can be re-read.[m
+              [1m-V[0m     List current [1mreadline[0m variable names and values.[m
+              [1m-f[0m [4mfilename[24m[m
+[7m Manual page cd(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049lbash-4.2$ cd
+bash-4.2$ pwd
+/home/u2/wos0005
+bash-4.2$ cd comp3500
+bash: cd: comp3500: No such file or directory
+bash-4.2$ cd comp3500[K[K[K[K[K[K[K[KCOMP3500
+bash-4.2$ ls
+commands.script  cpuinfo.txt  interrupts.txt  lspci.txt  meminfo.txt  simple  simple.c	task1.script  task2.script  testing  testing.c	wos0005
+bash-4.2$ exit
+exit
+
+Script done on Fri 30 Aug 2019 05:18:30 PM CDT

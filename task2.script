@@ -1,0 +1,9 @@
+Script started on Thu 29 Aug 2019 09:19:51 PM CDT
+[?1034hbash-4.2$ exit[1Pqqq[Ktopwhonproccd COMP3500ls[KcdlsaLScp ~/COMP3500/testing.c ~/[C[C[C[C[C[C[C[C[C[Cls[Kcp ~/COMP3500/testing.c ~/[C[C[C[C[C[C[C[C[C[CLS[Klascdlscd COMP3500[6Pnproc[2Pwhotop[2Pqqqexit[Kmore /proc/meminfo > [K[K[K[K[K[K[K[K[Kc[K[Kcpuinfo > cpuinfo.txt
+bash-4.2$ more /proc/meminfo > mm[Keminfo.txt
+bash-4.2$ more /sbin/lspci > lspci.txt
+bash-4.2$ more /proc/intt[Kerrupts > interrupts.txt
+bash-4.2$ exit
+exit
+
+Script done on Thu 29 Aug 2019 09:22:11 PM CDT
